@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2026 The Stdlib Authors.
@@ -16,19 +16,12 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
 
-// MODULES //
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@main/index.d.ts"/>
 
-var numelDimension = require( '@stdlib/ndarray-base-numel-dimension' );
-var getStride = require( '@stdlib/ndarray-base-stride' );
-var getOffset = require( '@stdlib/ndarray-base-offset' );
-var getData = require( '@stdlib/ndarray-base-data-buffer' );
-var strided = require( '@stdlib/blas-ext-base-caxpby' ).ndarray;
-var ndarraylike2scalar = require( '@stdlib/ndarray-base-ndarraylike2scalar' );
-
-
-// MAIN //
+import { complex64ndarray, typedndarray } from '@stdlib/types/ndarray';
+import { Complex64 } from '@stdlib/types/complex';
 
 /**
 * Multiplies a one-dimensional single-precision complex floating-point ndarray by a scalar constant and adds the result to a second one-dimensional single-precision complex floating-point ndarray multiplied by a scalar constant.
@@ -42,8 +35,8 @@ var ndarraylike2scalar = require( '@stdlib/ndarray-base-ndarraylike2scalar' );
 *     -   a zero-dimensional ndarray containing the constant by which to multiply the input ndarray.
 *     -   a zero-dimensional ndarray containing the constant by which to multiply the output ndarray.
 *
-* @param {ArrayLikeObject<Object>} arrays - array-like object containing ndarrays
-* @returns {ndarray} output ndarray
+* @param arrays - array-like object containing ndarrays
+* @returns output ndarray
 *
 * @example
 * var Complex64Vector = require( '@stdlib/ndarray-vector-complex64' );
@@ -64,21 +57,9 @@ var ndarraylike2scalar = require( '@stdlib/ndarray-base-ndarraylike2scalar' );
 * var out = caxpby( [ x, y, alpha, beta ] );
 * // returns <ndarray>[ <Complex64>[ 3.0, 4.0 ], <Complex64>[ 9.0, 5.0 ], <Complex64>[ 3.0, -2.0 ] ]
 */
-function caxpby( arrays ) {
-	var alpha;
-	var beta;
-	var x;
-	var y;
-
-	x = arrays[ 0 ];
-	y = arrays[ 1 ];
-	alpha = ndarraylike2scalar( arrays[ 2 ] );
-	beta = ndarraylike2scalar( arrays[ 3 ] );
-	strided( numelDimension( x, 0 ), alpha, getData( x ), getStride( x, 0 ), getOffset( x ), beta, getData( y ), getStride( y, 0 ), getOffset( y ) ); // eslint-disable-line max-len
-	return y;
-}
+declare function caxpby( arrays: [ complex64ndarray, complex64ndarray, typedndarray<Complex64>, typedndarray<Complex64> ] ): complex64ndarray;
 
 
 // EXPORTS //
 
-module.exports = caxpby;
+export = caxpby;
