@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2026 The Stdlib Authors.
@@ -16,17 +16,31 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
+
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@main/index.d.ts"/>
+
+import { complex64ndarray, typedndarray } from '@stdlib/types/ndarray';
+import { Complex64 } from '@stdlib/types/complex';
 
 /**
-* Multiply a one-dimensional single-precision complex floating-point ndarray by a scalar constant and add the result to a second one-dimensional single-precision complex floating-point ndarray multiplied by a scalar constant.
+* Multiplies a one-dimensional single-precision complex floating-point ndarray by a scalar constant and adds the result to a second one-dimensional single-precision complex floating-point ndarray multiplied by a scalar constant.
 *
-* @module @stdlib/blas-ext-base-ndarray-caxpby
+* ## Notes
+*
+* -   The function expects the following ndarrays:
+*
+*     -   a one-dimensional input ndarray.
+*     -   a one-dimensional output ndarray.
+*     -   a zero-dimensional ndarray containing the constant by which to multiply the input ndarray.
+*     -   a zero-dimensional ndarray containing the constant by which to multiply the output ndarray.
+*
+* @param arrays - array-like object containing ndarrays
+* @returns output ndarray
 *
 * @example
 * var Complex64Vector = require( '@stdlib/ndarray-vector-complex64' );
 * var Complex64Tensor0D = require( '@stdlib/ndarray-tensor0d-complex64' );
-* var caxpby = require( '@stdlib/blas-ext-base-ndarray-caxpby' );
 *
 * var x = new Complex64Vector( [ 1.0, 2.0, 3.0, -1.0, 0.0, 1.0 ] );
 * var y = new Complex64Vector( [ 2.0, 1.0, -1.0, 3.0, 4.0, 0.0 ] );
@@ -37,12 +51,9 @@
 * var out = caxpby( [ x, y, alpha, beta ] );
 * // returns <ndarray>[ <Complex64>[ 3.0, 4.0 ], <Complex64>[ 9.0, 5.0 ], <Complex64>[ 3.0, -2.0 ] ]
 */
-
-// MODULES //
-
-var main = require( './main.js' );
+declare function caxpby( arrays: [ complex64ndarray, complex64ndarray, typedndarray<Complex64>, typedndarray<Complex64> ] ): complex64ndarray;
 
 
 // EXPORTS //
 
-module.exports = main;
+export = caxpby;
